@@ -1,65 +1,55 @@
+import { AntDesign, EvilIcons, Feather, FontAwesome, Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
 
-export default function HomeLayout() {
+const HomeRootLayout = () => {
     return (
         <Tabs
             screenOptions={{
-                tabBarActiveTintColor: "#000",
-                tabBarInactiveTintColor: "#888",
-                headerShown: false, // default
+                tabBarActiveTintColor: "#34967C",
+                headerShown: false, // global header hidden
             }}
         >
             <Tabs.Screen
                 name="index"
                 options={{
                     title: "Home",
-                    tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="home" size={size} color={color} />
-                    ),
+                    tabBarIcon: ({ color }) => <AntDesign name="home" size={24} color={color} />,
                 }}
             />
-
             <Tabs.Screen
                 name="search"
                 options={{
                     title: "Search",
-                    tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="search" size={size} color={color} />
-                    ),
+                    headerShown: true,
+                    tabBarIcon: ({ color }) => <Feather name="search" size={24} color={color} />,
                 }}
             />
-
             <Tabs.Screen
                 name="saved"
                 options={{
                     title: "Saved",
-                    tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="heart" size={size} color={color} />
-                    ),
+                    headerShown: true,
+                    tabBarIcon: ({ color }) => <EvilIcons name="heart" size={27} color={color} />,
                 }}
             />
-
             <Tabs.Screen
                 name="inbox"
                 options={{
                     title: "Inbox",
-                    tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="chatbubble" size={size} color={color} />
-                    ),
+                    headerShown: true,
+                    tabBarIcon: ({ color }) => <Ionicons name="chatbubbles-outline" size={24} color={color} />,
                 }}
             />
-
-            {/* 👇 Profile tab — removed headerShown */}
             <Tabs.Screen
                 name="profile"
                 options={{
                     title: "Profile",
-                    tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="person" size={size} color={color} />
-                    ),
+                    tabBarIcon: ({ color }) => <FontAwesome name="user-o" size={24} color={color} />,
+                    // headerShown removed here for NativeWind integration
                 }}
             />
         </Tabs>
     );
-}
+};
+
+export default HomeRootLayout;
